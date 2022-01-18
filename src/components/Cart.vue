@@ -24,7 +24,7 @@
                             </router-link>
                         </td>
                         <td class="cart_price">
-                            <p>{{ item.price }}</p>
+                            <p>&#8377;{{ item.price }}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
@@ -39,7 +39,7 @@
                         </td>
                         <td class="cart_total">
                             <p class="cart_total_price">
-                                {{ item.price * item.quantity }}
+                                &#8377;{{ item.price * item.quantity }}
                             </p>
                         </td>
                         <td class="cart_delete">
@@ -58,7 +58,7 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span>{{check()}}</span></td>
+                                    <td><span>&#8377;{{check()}}</span></td>
                                 </tr>
                             </table>
                         </td>

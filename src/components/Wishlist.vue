@@ -28,7 +28,7 @@
                 </td>
                 <td>
                   <h4>
-                    {{ item.product_price }}
+                    &#8377;{{ item.product_price }}
                   </h4>
                 </td>
                 <td class="cart_delete">

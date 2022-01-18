@@ -9,25 +9,20 @@
                 <div class="col-sm-4" v-for="(i, index) in arr" :key="index">
                     <div class="product-image-wrapper">
                         <div class="single-products">
-                            <div class="productinfo">
+                            <div class="productinfo text-center">
                                 <router-link :to="`/productdetails/${i.pid}`">
                                     <img :src="i.images" alt="" class="img-fluid" height="200px" width="500px" />
                                 </router-link>
                                 <div class="text-center">
-                                <h3><span>&#8377;{{ i.price }}</span></h3>
-                                <h3><span class="text-primary">{{ i.name }}</span></h3>
-                                    <ul>
-                                        <li>
-                                            <a href="#" @click="addCartBtn(i.pid,i.name,i.price,i.images)" class="btn btn-default add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i>Add to cart
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" @click="postWish(i)" class="btn add-to-cart">
-                                                <i class="fa fa-plus-square"></i>Add to wishlist
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <h2><b>&#8377;{{ i.price }}</b></h2>
+                                    <h3><span class="text-primary">{{ i.name }}</span></h3>
+                                    <a href="#" @click="addCartBtn(i.pid,i.name,i.price,i.images)" class="btn btn-default add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i>Add to cart
+                                    </a>
+                                    <a href="#" @click="postWish(i)" class="btn add-to-cart">
+                                        <i class="fa fa-plus-square"></i>Add to wishlist
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -41,8 +36,9 @@
 </template>
 
 <script>
-
-import {userWish} from "@/common/Service";
+import {
+    userWish
+} from "@/common/Service";
 import Sidebar from "./includes/Sidebar.vue";
 import {
     categorybyid
@@ -58,7 +54,7 @@ export default {
             arr: [],
             paramm: undefined,
             uid: localStorage.getItem('userid')
-            
+
         };
     },
     computed: {
@@ -75,30 +71,30 @@ export default {
             });
             this.$store.commit('change')
             this.$store.commit('cnt')
-            this.$swal("Added",'','success');
+            this.$swal("Added", '', 'success');
         },
         postWish(pro) {
-            if(localStorage.getItem('uid')){
-            let obj = {
-                userid: this.uid,
-                product_id: pro.pid,
-                product_price: pro.price,
-                product_name: pro.name,
-                product_image: pro.images,
-            };
-            console.log(obj);
-            userWish(obj)
-                .then((res) => {
-                    if (res.data.message=="error") {
-                      this.$swal("Already added!","Go and Grab it...","info");
-                    }else{
-                      this.$swal("Added to wishlist!","","success");
-                    }
-                })
-                .catch((err) => {
-                    console.log("SOmething Wrong " + err);
-                });
-            }else{
+            if (localStorage.getItem('uid')) {
+                let obj = {
+                    userid: this.uid,
+                    product_id: pro.pid,
+                    product_price: pro.price,
+                    product_name: pro.name,
+                    product_image: pro.images,
+                };
+                console.log(obj);
+                userWish(obj)
+                    .then((res) => {
+                        if (res.data.message == "error") {
+                            this.$swal("Already added!", "Go and Grab it...", "info");
+                        } else {
+                            this.$swal("Added to wishlist!", "", "success");
+                        }
+                    })
+                    .catch((err) => {
+                        console.log("SOmething Wrong " + err);
+                    });
+            } else {
                 this.$router.push('/login');
             }
         },
