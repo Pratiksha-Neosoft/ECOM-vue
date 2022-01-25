@@ -1,5 +1,6 @@
 <template>
 <div class="container">
+    <Slider />    
     <div class="row">
         <Sidebar />
         <div class="col-sm-9 padding-right">
@@ -95,13 +96,15 @@ export default {
 
     },
     beforeCreate() {
+        this.$isLoading(true)
         product()
             .then((res) => {
                 this.arr = res.data.product;
             })
-            .catch((error) => {
-                console.log("Something Wrong " + error);
-            });
+
+            .finally(() => {
+          this.$isLoading(false) // hide loading screen
+        })
     }
 }
 </script>

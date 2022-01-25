@@ -157,7 +157,7 @@ export default {
   computed: mapState({
     inCart() { return this.$store.getters.inCart},
     numInCart() { return this.$store.getters.count},
-    user(){return this.$store.getters.email}
+    user(){return this.$store.getters.uname}
   }),
   data(){
     return{
@@ -182,10 +182,12 @@ export default {
       localStorage.removeItem('uid')
       localStorage.removeItem('vuex')
       localStorage.removeItem('userid')
+      localStorage.removeItem('uname')
       localStorage.removeItem('total')
       localStorage.removeItem('cart')
       localStorage.removeItem('cnt')
       this.$store.commit('changeMail')
+      this.$store.commit('changeUser')
       this.$store.commit('change');
       this.$store.commit('cnt');
       this.$router.push("/")

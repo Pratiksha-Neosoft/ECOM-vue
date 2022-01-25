@@ -4,6 +4,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
         token:'',
+        uname:localStorage.getItem('uname')?localStorage.getItem('uname'):'',
        emailid:localStorage.getItem('uid')?localStorage.getItem('uid'):'',
        cart:JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [],
        cnt:localStorage.getItem('cnt')?localStorage.getItem('cnt'):0,
@@ -11,7 +12,8 @@ export default new Vuex.Store({
     getters:{
         inCart: state => state.cart,
         count:state=>state.cnt,
-        email:state=>state.emailid
+        email:state=>state.emailid,
+        uname:state=>state.uname
      },
     mutations:{
         tokenemail(state,payload){
@@ -22,6 +24,9 @@ export default new Vuex.Store({
         },
         changeMail(state){
             return state.emailid=localStorage.getItem('uid') ? localStorage.getItem('uid') : '';
+        },
+        changeUser(state){
+            return state.uname=localStorage.getItem('uname') ? localStorage.getItem('uname') : '';
         },
         cnt(state){
             return state.cnt=JSON.parse(localStorage.getItem('cnt')) ? JSON.parse(localStorage.getItem('cnt')) : 0;

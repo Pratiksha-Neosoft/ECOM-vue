@@ -28,6 +28,7 @@
                 <div class="col-sm-6">
                   <h1><span>E</span>-SHOPPER</h1>
                   <h2>{{ arr[0].caption }}</h2>
+                  <h3 v-if="arr[0].body">{{arr[0].body}}</h3>
                 </div>
                 <div class="col-sm-6">
                   <img
@@ -44,6 +45,7 @@
                 <div class="col-sm-6">
                   <h1><span>E</span>-SHOPPER</h1>
                   <h2>{{ i.caption }}</h2>
+                  <h3 v-if="i.body">{{i.body}}</h3>
                 </div>
                 <div class="col-sm-6">
                   <img

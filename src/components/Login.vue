@@ -107,7 +107,9 @@ export default {
               console.log(res.data)
               saveToken(res.data.token);
               localStorage.setItem("uid", res.data.email);
+              localStorage.setItem("uname", res.data.firstname+' '+res.data.lastname);
               localStorage.setItem("userid", res.data.userid);
+              this.$store.state.uname=localStorage.getItem("uname");
               this.$store.state.emailid=localStorage.getItem("uid");
               this.$router.push("/");
             }

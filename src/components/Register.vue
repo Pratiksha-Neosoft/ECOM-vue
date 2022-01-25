@@ -166,15 +166,11 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-
-      // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.user));
-   console.log(formData);
+this.$isLoading(true)
         userRegister(formData)
       .then(res=>{
              if(res.data.message==1){
                 this.$router.push("/login");
-               console.log(this.formData);
-               console.log(res.data);
             }
             else{
                alert("something went wrong")  
@@ -183,6 +179,8 @@ export default {
         })
         .catch(error=>{
             console.log("Something Wrong "+error)
+        })            .finally(() => {
+          this.$isLoading(false) // hide loading screen
         })
     },
      

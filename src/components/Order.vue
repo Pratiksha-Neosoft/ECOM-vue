@@ -7,8 +7,8 @@
                     <tr class="cart_menu">
                         <td class="text-center">Name</td>
                         <td class="image">Item</td>
-                        <td class="price">Price</td>
                         <td class="quantity">Quantity</td>
+                        <td class="price">Price</td>
                         <td class="total">Status</td>
                         <td></td>
                     </tr>
@@ -23,11 +23,12 @@
                             <img :src="url+item.image" width="200" height="150" alt="Card image cap" />
                             </router-link>
                         </td>
-                        <td class="cart_price">
-                            <p>{{ item.price }}</p>
-                        </td>
                         <td class="cart_quantity">
                             <p>{{item.quantity}}</p>
+                        </td>
+                        <td class="cart_price">
+                            <p>{{ item.price }}*{{ item.quantity }}</p>
+                            <p>=&#8377;{{ item.price*item.quantity }}</p>
                         </td>
                         <td class="cart_total">
                             <p class="cart_total_price">
